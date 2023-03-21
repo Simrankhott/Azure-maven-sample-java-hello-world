@@ -1,0 +1,28 @@
+trigger:
+  branches:
+    include:
+      - master
+
+pool:
+  name: simran
+
+steps:
+  - script: |
+      sudo apt-get update
+      sudo apt-get install -y default-jdk maven
+    displayName: 'Install Java and Maven'
+
+  - script: 'mvn clean test'
+    displayName: 'Build and Test with Maven'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      artifactName: 'myartifact'
+      targetPath: '$(Build.SourcesDirectory)/target'
+    displayName: 'Publish Artifact: myartifact'
+
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      artifact: 'myartifact'
+      path: '/home/ubuntu/myartifact'
+      displayName: 'Download Artifact: myartifact'
