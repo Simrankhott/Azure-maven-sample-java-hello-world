@@ -1,6 +1,6 @@
 branches: This section specifies the branches to include in the pipeline. In this case, it includes only the master branch.
 
-pool: This section specifies the name of the agent pool where the pipeline will run. The name field is set to simran, indicating that the pipeline will use an agent pool named "simran".
+pool: This section specifies the name of the agent pool where the pipeline will run. The name field is set to simran, indicating that the pipeline will use an agent pool named "myagent".
 
 steps: This section contains the steps that will be executed as part of the pipeline.
 
